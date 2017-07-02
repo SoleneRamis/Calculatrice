@@ -15,7 +15,10 @@ app.use(bodyParser.json())
 
 // Routes
 app.get('/', (request, reponse) => {
-  reponse.render('src/components/Calculatrice.vue')
+  let Calcul = require('./models/calcul')
+  Calcul.all(function (calculs) {
+    reponse.render('src/components/Calculatrice.vue, {calculs: calculs}')
+  })
 })
 
 app.post('/', (request, reponse) => {

@@ -32,6 +32,8 @@
       </div>
     </div>
   </div>
+  <div v-for="calcul of calculs"></div>
+  <div class="calculs"> {{ calcul.content }} </div>
 </script>
   </div>
 </template>
