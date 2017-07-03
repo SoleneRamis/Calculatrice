@@ -32,8 +32,7 @@
       </div>
     </div>
   </div>
-  <div v-for="calcul of calculs"></div>
-  <div class="calculs"> {{ calcul.content }} </div>
+
 </script>
   </div>
 </template>
@@ -68,6 +67,12 @@ export default {
     },
 
     result () {
+    /*
+      post(number1, number2, {
+
+        accumulated = reponse
+      })
+    */
       let tokens = this.equation.split(/\b/)
       let accumulated = parseFloat(tokens.shift())
 

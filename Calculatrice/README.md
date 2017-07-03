@@ -13,22 +13,16 @@ Le calcul doit s'effectuer sur le serveur distant et prendre quelques secondes (
 
 <hr>
 
-# Commandes
+# Getting Started
 
-## Git
-### File Recovery
 ```
+# clone it :
 git clone https://github.com/SoleneRamis/TestCalculatrice.git
-```
+cd TestCalculatrice/Calculatrice
 
-## Build Setup
-### install dependencies localy
-```
+# install dependencies localy :
 npm install
-```
 
-## Developpement
-### serve with hot reload at localhost:8080
-```
+# Start development serve with hot reload at localhost:8080 :
 npm run start
 ```
