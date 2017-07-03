@@ -7,28 +7,28 @@
     </div>
     <div class='buttons'>
       <div class='row'>
-        <div class='button' v-on:click="append('7')">7</div>
-        <div class='button' v-on:click="append('8')">8</div>
-        <div class='button' v-on:click="append('9')">9</div>
+        <div class='button' v-on:click="getNumber('7')">7</div>
+        <div class='button' v-on:click="getNumber('8')">8</div>
+        <div class='button' v-on:click="getNumber('9')">9</div>
           <div class='button' v-on:click='clearAll'>C</div>
       </div>
       <div class='row'>
-        <div class='button' v-on:click="append('4')">4</div>
-        <div class='button' v-on:click="append('5')">5</div>
-        <div class='button' v-on:click="append('6')">6</div>
+        <div class='button' v-on:click="getNumber('4')">4</div>
+        <div class='button' v-on:click="getNumber('5')">5</div>
+        <div class='button' v-on:click="getNumber('6')">6</div>
         <div class='button' v-on:click='clearLastNum'>&#x2190;</div>
       </div>
       <div class='row'>
-        <div class='button' v-on:click="append('1')">1</div>
-        <div class='button' v-on:click="append('2')">2</div>
-        <div class='button' v-on:click="append('3')">3</div>
-        <div class='button' v-on:click="append('+')">+</div>
+        <div class='button' v-on:click="getNumber('1')">1</div>
+        <div class='button' v-on:click="getNumber('2')">2</div>
+        <div class='button' v-on:click="getNumber('3')">3</div>
+        <div class='button' v-on:click="getNumber('+')">+</div>
       </div>
       <div class='row'>
         <div class='vide'></div>
-        <div class='button' v-on:click="append('0')">0</div>
+        <div class='button' v-on:click="getNumber('0')">0</div>
         <div class='vide'></div>
-        <div class='button' v-on:click='result'>=</div>
+        <div class='button' v-on:click='sendCalcul'>=</div>
       </div>
     </div>
   </div>
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'calculatrice',
   data () {
@@ -58,34 +60,63 @@ export default {
       }
     },
 
-    append (num) {
-      console.log(num)
-      if (this.equation[0] === this.equation) {
-        this.equation = this.equation.substring(1, this.equation.length)
-      }
-      this.equation += num
+    getNumber (num) {
+      // console.log(num)
+      let number1 = num // number des bouton
+      let number2 = num // number des bouton
+      this.sendCalcul(number1, number2)
     },
 
-    result () {
-    /*
-      post(number1, number2, {
-
-        accumulated = reponse
+    sendCalcul (num1, num2) {
+      axios.post('http://localhost:7000/', {
+        number1: num1,
+        number2: num2
       })
-    */
-      let tokens = this.equation.split(/\b/)
-      let accumulated = parseFloat(tokens.shift())
-
-      while (tokens.length) {
-        let operator = tokens.shift()
-        let second = parseFloat(tokens.shift())
-        switch (operator) {
-          case '+' : accumulated = accumulated + second
-        }
-      }
-      console.log('=', accumulated)
-      this.equation = accumulated
+      .then(function (res) {
+        console.log(res)
+        this.equation = res
+      })
+      .catch(function (error) {
+        console.log(error)
+        // { error_message }
+      })
     }
+
+    // append (num) {
+    //   console.log(num)
+    //   if (this.equation[0] === this.equation) {
+    //     this.equation = this.equation.substring(1, this.equation.length)
+    //   }
+    //   this.equation += num
+    // },
+
+    // getNumber (num) {
+    //   if (this.equation[0] === this.equation) {
+    //     this.equation = this.equation.substring(1, this.equation.length)
+    //   }
+    //   this.equation += num
+    // },
+
+    // result () {
+    // /*
+    //   post(number1, number2, {
+    //
+    //     accumulated = reponse
+    //   })
+    // */
+    //   let tokens = this.equation.split(/\b/)
+    //   let accumulated = parseFloat(tokens.shift())
+    //
+    //   while (tokens.length) {
+    //     let operator = tokens.shift()
+    //     let second = parseFloat(tokens.shift())
+    //     switch (operator) {
+    //       case '+' : accumulated = accumulated + second
+    //     }
+    //   }
+    //   console.log('=', accumulated)
+    //   this.equation = accumulated
+    // }
   }
 }
 </script>
