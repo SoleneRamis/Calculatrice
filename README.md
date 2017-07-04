@@ -100,11 +100,33 @@ Le calcul doit s'effectuer sur le serveur distant et prendre quelques secondes (
 ````
 ````
 # Routage :
+
   var express = require('express');
   var app = express();
 
   // respond with "hello world" when a GET request is made to the homepage
   app.get('/', function(req, res) {
     res.send('hello world');
+  });
+````
+
+### [Axios](https://www.npmjs.com/package/axios)
+````
+# installation des dépendances :
+   npm install axios
+````
+
+````
+# Post Request :
+
+  axios.post('/user', {
+   firstName: 'Fred',
+   lastName: 'Flintstone'
+  })
+  .then(function (response) {
+   console.log(response);
+  })
+  .catch(function (error) {
+   console.log(error);
   });
 ````
