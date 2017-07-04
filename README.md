@@ -1,6 +1,6 @@
 # Test Calculatrice - ARTE STUDIO LAB
 
-> Calculatrice JS : Librairie VueJS
+> Calculatrice JS : Client : Framework VueJS && Serveur : Infrastructure Web ExpressJS
 
 > solene.ramis@gmail.com
 
@@ -12,7 +12,7 @@
 ````
 
 ````
-# ouvrir deux terminals :
+# ouvrir deux terminaux :
   l. Pour le serveur
       * cd TestCalculatrice/Serveur
       * npm install
