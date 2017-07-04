@@ -1,6 +1,6 @@
 # Test Calculatrice - ARTE STUDIO LAB
 
-> Calculatrice JS : Client : Framework VueJS && Serveur : Infrastructure Web ExpressJS
+> Calculatrice JS - Client : Framework VueJS / Serveur : Infrastructure Web ExpressJS
 
 > solene.ramis@gmail.com
 
