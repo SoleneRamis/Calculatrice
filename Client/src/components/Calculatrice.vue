@@ -2,9 +2,7 @@
   <div class="calculatrice">
     <h4>{{ msg }}</h4>
     <div class="calculator">
-      <p>
-        Cliquer sur deux nombres pour que le serveur puisse les additionner
-      </p>
+      <p>{{ alert }}</p>
       <div class='input'>
         <input type='text' disabled="disabled" v-model='lastResult'>
       </div>
@@ -46,6 +44,7 @@ export default {
   data () {
     return {
       msg: 'Solène Ramis',
+      alert: 'Cliquer sur deux nombres pour que le serveur puisse les additionner',
       lastResult: 0
     }
   },
@@ -60,6 +59,7 @@ export default {
       let number1 = this.lastResult
       let number2 = num
       let addition = '+'
+      this.alert = 'Attendre la réponse du serveur...'
       this.sendCalcul(number1, number2, addition)
     },
 
@@ -73,6 +73,7 @@ export default {
       .then(function (res) {
         console.log(res.data.newNumber)
         that.lastResult = res.data.newNumber
+        that.alert = 'Cliquer sur deux nombres pour que le serveur puisse les additionner'
       })
       .catch(function (error) {
         console.log(error)

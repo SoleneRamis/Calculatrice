@@ -49,7 +49,7 @@ Le calcul doit s'effectuer sur le serveur distant et prendre quelques secondes (
 ````
 > pourrait etre : une application mobile, un site, une objet connecté...
 
-# Server http://localhost:7000
+# Serveur http://localhost:7000
 
 ````
   * Route post reçoit deux nombres
