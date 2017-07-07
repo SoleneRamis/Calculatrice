@@ -1,4 +1,4 @@
-# Test Calculatrice - ARTE STUDIO LAB
+# Test Calculatrice
 
 > Calculatrice JS - Client : Framework VueJS / Serveur : Infrastructure Web ExpressJS
 
